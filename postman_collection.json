@@ -1,0 +1,261 @@
+{
+    "info": {
+        "name": "AI Commerce Agent API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Collection for testing the AI Commerce Agent API endpoints"
+    },
+    "item": [
+        {
+            "name": "Search Products",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/search",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "search"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"gaming laptop with good battery life\",\n    \"category\": \"laptops\",\n    \"min_price\": 1000,\n    \"max_price\": 3000,\n    \"top_k\": 3\n}"
+                }
+            },
+            "response": [
+                {
+                    "name": "Basic Search",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"query\": \"gaming laptop with good battery life\",\n    \"category\": \"laptops\",\n    \"min_price\": 1000,\n    \"max_price\": 3000,\n    \"top_k\": 3\n}"
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"results\": [\n        {\n            \"id\": \"laptop_1\",\n            \"name\": \"Gaming Laptop\",\n            \"description\": \"High-performance gaming laptop with long battery life\",\n            \"price\": 1999.99,\n            \"category\": \"laptops\",\n            \"features\": {\n                \"processor\": \"Intel i7\",\n                \"ram\": \"16GB\",\n                \"storage\": \"1TB SSD\",\n                \"battery_life\": \"8 hours\"\n            },\n            \"score\": 0.95\n        }\n    ]\n}"
+                }
+            ]
+        },
+        {
+            "name": "Agent Q&A",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/agent/qa",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "agent", "qa"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"I need a laptop for gaming and video editing. What would you recommend?\",\n    \"conversation_history\": []\n}"
+                }
+            },
+            "response": [
+                {
+                    "name": "Agent Response",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"query\": \"I need a laptop for gaming and video editing. What would you recommend?\",\n    \"conversation_history\": []\n}"
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"response\": \"Based on your needs for gaming and video editing, I recommend a high-performance laptop with a powerful processor, dedicated graphics card, and ample RAM. Here are some key features to look for:\n\n1. Processor: Intel i7 or i9, or AMD Ryzen 7 or 9\n2. Graphics: NVIDIA RTX 3060 or better\n3. RAM: 16GB minimum, 32GB recommended\n4. Storage: 1TB SSD\n5. Display: 15.6\" or larger with high refresh rate\n\nWould you like me to search for specific models that match these criteria?\",\n    \"follow_up_questions\": [\n        \"What's your budget range?\",\n        \"Do you have any specific brand preferences?\",\n        \"How important is portability to you?\"\n    ]\n}"
+                }
+            ]
+        },
+        {
+            "name": "Image Search",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/search/image",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "search", "image"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"image_url\": \"https://example.com/product_image.jpg\"\n}"
+                }
+            },
+            "response": [
+                {
+                    "name": "Image Search Results",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"image_url\": \"https://example.com/product_image.jpg\"\n}"
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"results\": [\n        {\n            \"id\": \"laptop_1\",\n            \"name\": \"Gaming Laptop\",\n            \"description\": \"High-performance gaming laptop\",\n            \"price\": 1999.99,\n            \"category\": \"laptops\",\n            \"features\": {\n                \"processor\": \"Intel i7\",\n                \"ram\": \"16GB\",\n                \"storage\": \"1TB SSD\"\n            },\n            \"score\": 0.92\n        }\n    ]\n}"
+                }
+            ]
+        },
+        {
+            "name": "Search Products - Budget Phones",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"affordable smartphone with good camera\",\n    \"category\": \"smartphones\",\n    \"max_price\": 500,\n    \"top_k\": 2\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/search",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "search"]
+                },
+                "description": "Search for budget smartphones with good cameras"
+            },
+            "response": []
+        },
+        {
+            "name": "Search Products - Premium Tablets",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"query\": \"premium tablet for digital art\",\n    \"category\": \"tablets\",\n    \"min_price\": 800,\n    \"top_k\": 2\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/search",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "search"]
+                },
+                "description": "Search for premium tablets suitable for digital art"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Similar Products",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/similar/{{product_id}}?top_k=3",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "similar", "{{product_id}}"],
+                    "query": [
+                        {
+                            "key": "top_k",
+                            "value": "3"
+                        }
+                    ]
+                },
+                "description": "Get similar products based on a reference product ID"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Similar Products with Category",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/similar/{{product_id}}?top_k=3&category=laptops",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "similar", "{{product_id}}"],
+                    "query": [
+                        {
+                            "key": "top_k",
+                            "value": "3"
+                        },
+                        {
+                            "key": "category",
+                            "value": "laptops"
+                        }
+                    ]
+                },
+                "description": "Get similar products filtered by category"
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "description": "Base URL for the API"
+        },
+        {
+            "key": "product_id",
+            "value": "laptop-1",
+            "description": "ID of the product to find similar items for"
+        }
+    ]
+} 

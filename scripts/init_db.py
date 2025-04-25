@@ -63,7 +63,29 @@ def generate_products(num_products=100):
     }
 
     products = []
-    for i in range(num_products):
+    
+    # Add a budget laptop
+    budget_laptop = {
+        "id": "laptop-budget-1",
+        "name": "Acer Budget Laptop",
+        "description": "Perfect for students and basic tasks. Features Intel i3 processor, 8GB RAM, 256GB SSD, and a 15.6 inch display. Lightweight and portable with up to 8 hours battery life.",
+        "price": 399,
+        "category": "laptops",
+        "features": [
+            "Intel i3",
+            "8GB RAM",
+            "256GB SSD",
+            "15.6 inch display",
+            "Up to 8 hours battery life",
+            "Lightweight build"
+        ],
+        "use_case": "student",
+        "brand": "Acer"
+    }
+    products.append(budget_laptop)
+    
+    # Generate remaining products
+    for i in range(num_products - 1):
         category = random.choice(list(categories.keys()))
         cat_data = categories[category]
         brand = random.choice(cat_data["brands"])
